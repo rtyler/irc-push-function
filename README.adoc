@@ -19,7 +19,7 @@ Once the prerequisites have been met, hosting the function locally requires an
 invocation of the new `cargo func` command: `cargo func run --port 8100`
 
 .Sending test data
-[source]
+[source,sh]
 ----
 curl -XPOST --data @events.push.json http://localhost:8100/api/webhook
 ----
@@ -32,7 +32,7 @@ link:https://github.com/rtyler[rtyler].
 If you wish to deploy this yourself, you will need to configure an Azure
 Functions App (Classic) and your own registry.
 
-[source]
+[source,sh]
 ----
 docker build -t functionsbrokencode.azurecr.io/irc-push . && docker push functionsbrokencode.azurecr.io/irc-push
 ----
