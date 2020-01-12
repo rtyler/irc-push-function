@@ -1,0 +1,17 @@
+= IRC push function
+
+== Development
+
+=== Local invocations
+
+[source,bash]
+----
+curl -XPOST --data @events.push.json http://localhost:8100/api/webhook
+----
+
+=== Deployment
+
+[source,bash]
+----
+docker build -t functionsbrokencode.azurecr.io/irc-push . && docker push functionsbrokencode.azurecr.io/irc-push
+----
