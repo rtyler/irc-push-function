@@ -1,17 +1,38 @@
 = IRC push function
 
+This is an
+link:https://github.com/peterhuene/azure-functions-rs/[Azure Function]
+which implements a simple dispatch of push events into a pre-defined IRC channel.
+
+
 == Development
+
+Running the unit test(s) can be done with: `cargo test`
 
 === Local invocations
 
-[source,bash]
+Running locally will first require the prerequisites for the azure-functions-rs
+crate to be installed, which is described
+link:https://github.com/peterhuene/azure-functions-rs/#installation[in this document].
+
+Once the prerequisites have been met, hosting the function locally requires an
+invocation of the new `cargo func` command: `cargo func run --port 8100`
+
+.Sending test data
+[source]
 ----
 curl -XPOST --data @events.push.json http://localhost:8100/api/webhook
 ----
 
 === Deployment
 
-[source,bash]
+The following is an example of the deployment to an Azure Container Registry configured by
+link:https://github.com/rtyler[rtyler].
+
+If you wish to deploy this yourself, you will need to configure an Azure
+Functions App (Classic) and your own registry.
+
+[source]
 ----
 docker build -t functionsbrokencode.azurecr.io/irc-push . && docker push functionsbrokencode.azurecr.io/irc-push
 ----
